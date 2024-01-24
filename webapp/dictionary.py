@@ -1,5 +1,6 @@
 import justpy as jp
 import definition
+from webapp import layout
 
 
 class Dictionary:
@@ -8,7 +9,11 @@ class Dictionary:
     @classmethod
     def serve(cls, req):
         wp = jp.QuasarPage(tailwind=True)
-        div = jp.Div(a=wp, classes="bg-blue-200 h-screen text-center")
+
+        lay = layout.DefaultLayout(a=wp)
+        container = jp.QPageContainer(a=lay)
+
+        div = jp.Div(a=container, classes="bg-blue-200 h-screen text-center")
         jp.Div(a=div, text="Instant English Dictionary",
                classes="text-4xl m-2 pt-8 pb-1 text-center text-bold font-serif")
         jp.Div(a=div, text="Get the definition of any English word instantly as you type.",
